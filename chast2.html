@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Сколько денег нужно, чтобы не работать</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --bg:#05080a; --bg2:#0a1014; --card:#0e161a; --line:rgba(255,255,255,.09);
+  --txt:#eef3f0; --mut:#8fa39b; --gold:#e8b54d; --gold2:#f3cf86;
+  --emer:#22c98a; --emer2:#5fe6b0; --red:#e0563f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:'Manrope',sans-serif;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--emer);color:#000}
+.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--emer),var(--gold));z-index:100;box-shadow:0 0 12px var(--emer)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;z-index:0;pointer-events:none}
+.floaty{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.floaty span{position:absolute;opacity:.10;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(20px) rotate(0)}100%{transform:translateY(-120vh) rotate(-35deg)}}
+
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 64px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(5,8,10,.66),rgba(5,8,10,.9) 58%,var(--bg)),url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1100&q=70") center/cover}
+.hero .orb1{width:360px;height:360px;background:var(--emer);bottom:-120px;right:-110px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line);border-radius:100px;background:rgba(255,255,255,.04);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--emer2);font-weight:700;backdrop-filter:blur(8px)}
+.pill .dot{width:6px;height:6px;border-radius:50%;background:var(--emer);box-shadow:0 0 10px var(--emer);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.hero h1{font-size:clamp(28px,8vw,76px);margin:24px 0 0;position:relative;z-index:2;font-weight:800}
+.hero h1 .em{font-style:italic;background:linear-gradient(120deg,var(--emer2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:clamp(15px,4.4vw,19px);color:#c2d0ca;max-width:560px;margin-top:22px;position:relative;z-index:2}
+.scrollhint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--mut);font-size:11px;letter-spacing:2px;text-transform:uppercase;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollhint span{width:1px;height:32px;background:linear-gradient(transparent,var(--emer));animation:rise 1.8s infinite}
+@keyframes rise{0%{transform:scaleY(0);transform-origin:bottom}50%{transform:scaleY(1);transform-origin:bottom}51%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:top}}
+
+section{position:relative;z-index:2;padding:60px 0}
+.kicker{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kicker .num{font-family:'Bricolage Grotesque';font-size:18px;font-weight:800;color:#05080a;background:linear-gradient(135deg,var(--emer2),var(--emer));width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(34,201,138,.3);flex-shrink:0}
+.kicker .lab{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--emer2);font-weight:700}
+h2.sx{font-size:clamp(26px,7vw,40px);font-weight:800;margin-bottom:14px}
+.sx-p{color:var(--mut);font-size:clamp(15.5px,4.3vw,18px);max-width:560px}
+.hl{color:var(--gold2);font-weight:700}.hl-e{color:var(--emer2);font-weight:700}
+
+.panel{background:linear-gradient(160deg,#0c151a,#070d0f);border:1px solid var(--line);border-radius:22px;padding:24px 20px;margin-top:24px;position:relative;overflow:hidden}
+.panel::before{content:'';position:absolute;inset:0;border-radius:22px;background:radial-gradient(220px circle at var(--mx,50%) var(--my,-30%),rgba(34,201,138,.12),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+.panel.lit::before{opacity:1}
+.panel>*{position:relative}
+
+.bignum{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(48px,15vw,90px);line-height:1;text-align:center;background:linear-gradient(120deg,var(--emer2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bignlab{text-align:center;color:var(--mut);font-size:13px;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
+.rangewrap{margin-top:24px}
+.rangewrap .rv{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mut);margin-bottom:10px}
+.rangewrap .rv b{color:var(--emer2);font-family:'Bricolage Grotesque';font-size:20px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:100px;background:linear-gradient(90deg,var(--emer) var(--p,40%),rgba(255,255,255,.08) var(--p,40%));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--emer);border:4px solid #04140d;box-shadow:0 4px 14px rgba(34,201,138,.5);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--emer);border:4px solid #04140d;cursor:pointer}
+.subnote{text-align:center;color:var(--mut);font-size:13.5px;margin-top:18px}
+.passive{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;padding:14px;background:rgba(34,201,138,.08);border:1px solid rgba(34,201,138,.25);border-radius:14px}
+.passive .e{font-size:24px}.passive b{font-family:'Bricolage Grotesque';color:var(--emer2);font-size:20px}
+.passive span{font-size:13.5px;color:#c2d0ca}
+
+.chartbox{position:relative;width:100%;height:210px;margin-top:8px}
+.chartbox svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+.chartbox svg path,.chartbox svg line{vector-effect:non-scaling-stroke}
+.ov{position:absolute;transform:translate(-50%,-50%);font-family:'Manrope';white-space:nowrap;pointer-events:none}
+.ov-pill{padding:4px 11px;border-radius:100px;font-weight:700;font-size:12px;backdrop-filter:blur(4px)}
+.ov-coast{background:rgba(243,207,134,.16);color:var(--gold2)}
+@media(min-width:760px){.chartbox{height:280px}}
+.axisx{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--mut);font-weight:600}
+.axisy{font-size:11px;color:var(--mut);margin-bottom:6px;font-weight:600}
+.yearsbadge{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:8px}
+.yearsbadge b{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(40px,12vw,64px);color:var(--emer2)}
+.yearsbadge span{color:var(--mut);font-size:14px}
+
+.prog{height:30px;border-radius:100px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:8px;position:relative}
+.prog .f{height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--emer),var(--gold));display:flex;align-items:center;justify-content:flex-end;padding-right:12px;font-family:'Bricolage Grotesque';font-weight:800;color:#05140c;font-size:13px}
+
+.levers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.lever{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 16px;transition:.3s}
+@media(hover:hover){.lever:hover{border-color:var(--emer);transform:translateY(-3px)}}
+.lever .ic{font-size:28px;margin-bottom:10px}
+.lever h3{font-size:17px;margin-bottom:6px}
+.lever p{color:var(--mut);font-size:13.5px}
+
+.miles{margin-top:8px;display:grid;gap:12px}
+.mile{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.mile .pct{font-family:'Bricolage Grotesque';font-weight:800;font-size:20px;color:var(--gold2);text-align:center}
+.mile h3{font-size:16px;margin-bottom:3px}.mile p{color:var(--mut);font-size:13px}
+
+.cta{text-align:center;background:radial-gradient(circle at 50% 0%,rgba(34,201,138,.18),transparent 62%),var(--bg2);border:1px solid var(--line);border-radius:26px;padding:46px 22px}
+.cta p{color:var(--mut);max-width:460px;margin:0 auto;font-size:16px}
+.sharecard{position:relative;overflow:hidden;background:linear-gradient(160deg,#0d1a16,#091210);border:1px solid rgba(34,201,138,.32);border-radius:22px;padding:30px 24px;margin:0 auto 24px;max-width:440px;box-shadow:0 22px 60px rgba(0,0,0,.45)}
+.sharecard::after{content:'';position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.13),transparent);transform:skewX(-18deg);animation:shine 4.8s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,55%{left:-60%}100%{left:135%}}
+.sc-lab{font-size:11px;letter-spacing:3px;color:var(--emer2);font-weight:700}
+.sc-num{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(42px,13vw,66px);line-height:1.05;margin:8px 0 16px;background:linear-gradient(120deg,var(--emer2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sc-grid{display:flex;gap:14px;border-top:1px solid var(--line);padding-top:16px}
+.sc-grid>div{flex:1;text-align:left}
+.sc-grid b{display:block;font-family:'Bricolage Grotesque';font-size:24px;font-weight:800;color:var(--txt)}
+.sc-grid span{font-size:12px;color:var(--mut)}
+
+footer{padding:48px 0 60px;text-align:center;color:var(--mut);font-size:12px;letter-spacing:1px;border-top:1px solid var(--line);position:relative;z-index:2}
+.reveal{opacity:0;transform:translateY(34px)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important}}
+@media(min-width:760px){.hero h1{font-size:72px}section{padding:84px 0}.panel{padding:36px 32px}.levers{grid-template-columns:repeat(4,1fr)}}
+</style></head>
+<body>
+<div id="prog"></div><div class="grain"></div>
+<div class="floaty" id="floaty"></div>
+
+<header class="hero">
+  <div class="orb orb1"></div>
+  <div class="wrap">
+    <span class="pill"><span class="dot"></span>Бонус · вторая часть</span>
+    <h1>Сколько денег<br>нужно,<br><span class="em">чтобы<br>не работать</span></h1>
+    <p class="sub">Есть одна цифра. Накопил её — и можно жить на проценты, не ходя на работу. Сейчас посчитаем твою. Просто двигай ползунки.</p>
+  </div>
+  <div class="scrollhint"><span></span>посчитать</div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><div class="num">1</div><div class="lab">Твоя цифра</div></div>
+    <h2 class="sx">Сколько нужно, чтобы <span class="hl-e">не работать</span></h2>
+    <p class="sx-p">Возьми, сколько тратишь в месяц, и умножь на 300. Это и есть та сумма. Поставь свои траты:</p>
+    <div class="panel reveal">
+      <div class="bignum">$<span id="fn">0</span></div>
+      <div class="bignlab">столько нужно накопить</div>
+      <div class="rangewrap">
+        <div class="rv"><span>Трачу в месяц</span><b>$<span id="spend">2,500</span></b></div>
+        <input type="range" min="500" max="10000" step="100" value="2500" id="spendSlider">
+      </div>
+      <div class="passive"><span class="e">🤑</span><span>и она будет приносить тебе <b>$<span id="passive">2,500</span></b> в месяц — как раз на жизнь, ничего не делая</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><div class="num">2</div><div class="lab">Сколько идти</div></div>
+    <h2 class="sx">За сколько лет ты <span class="hl-e">дойдёшь</span></h2>
+    <p class="sx-p">Поставь, сколько готов откладывать в месяц. Линия покажет, когда накопишь. Точка — где деньги начинают расти сами.</p>
+    <div class="panel reveal">
+      <div class="yearsbadge"><b id="years">0</b><span>лет до цели</span></div>
+      <div class="axisy">↑ сколько у тебя денег</div>
+      <div class="chartbox" id="freedomBox"><svg id="freedomChart" viewBox="0 0 720 300" preserveAspectRatio="none"></svg>
+        <div class="ov ov-pill" id="fnLine" style="left:50%;background:rgba(243,207,134,.16);color:var(--gold2)">цель</div>
+        <div class="ov ov-pill" id="fnEnd" style="background:rgba(34,201,138,.2);color:var(--emer2)">ты здесь</div>
+        <div class="ov ov-pill ov-coast" id="fnCoast" style="opacity:0">деньги растут сами</div>
+      </div>
+      <div class="axisx"><span>сейчас</span><span>время идёт →</span><span id="fAxisEnd">27 лет</span></div>
+      <div class="rangewrap">
+        <div class="rv"><span>Откладываю в месяц</span><b>$<span id="invest">800</span></b></div>
+        <input type="range" min="100" max="4000" step="50" value="800" id="investSlider">
+      </div>
+      <div class="subnote">Даже лишние +$100 в месяц приближают цель на годы.</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="kicker"><div class="num">3</div><div class="lab">Где ты сейчас</div></div>
+    <h2 class="sx">Сколько ты уже <span class="hl">прошёл</span></h2>
+    <p class="sx-p">Поставь, сколько уже накоплено — увидишь, какую часть пути уже сделал.</p>
+    <div class="panel reveal">
+      <div class="prog"><div class="f" id="progFill">0%</div></div>
+      <div class="rangewrap">
+        <div class="rv"><span>Уже накоплено</span><b>$<span id="have">15,000</span></b></div>
+        <input type="range" min="0" max="400000" step="1000" value="15000" id="haveSlider">
+      </div>
+      <div class="subnote" id="progNote">Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="kicker"><div class="num">4</div><div class="lab">Как дойти быстрее</div></div>
+    <h2 class="sx">Четыре способа <span class="hl-e">ускориться</span></h2>
+    <div class="levers">
+      <div class="lever reveal"><div class="ic">🛒</div><h3>Тратить меньше</h3><p>Меньше тратишь — и цифра меньше, и откладываешь больше. Двойная польза.</p></div>
+      <div class="lever reveal"><div class="ic">💼</div><h3>Зарабатывать больше</h3><p>Прибавку не проедай — отправляй в копилку. Вот где скорость.</p></div>
+      <div class="lever reveal"><div class="ic">📈</div><h3>Деньги под процент</h3><p>Пусть деньги работают. Пара процентов сверху — и цель ближе на годы.</p></div>
+      <div class="lever reveal"><div class="ic">⏳</div><h3>Начать раньше</h3><p>Самое сильное. Начать сегодня важнее, чем отложить вдвое больше потом.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="kicker"><div class="num">5</div><div class="lab">Путь по шагам</div></div>
+    <h2 class="sx">Свобода приходит <span class="hl">не сразу</span></h2>
+    <p class="sx-p">По дороге к цели есть точки, и каждая уже меняет жизнь:</p>
+    <div class="miles reveal">
+      <div class="mile"><div class="pct">10%</div><div><h3>Подушка</h3><p>Полгода расходов отложено. Уходит страх остаться без денег.</p></div></div>
+      <div class="mile"><div class="pct">50%</div><div><h3>Деньги растут сами</h3><p>Капитал уже так велик, что дорастёт до цели сам, даже если перестанешь копить.</p></div></div>
+      <div class="mile"><div class="pct">100%</div><div><h3>Свобода</h3><p>Проценты покрывают жизнь. Работа становится выбором, а не обязанностью.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="sharecard" id="shareCard">
+        <div class="sc-lab">ТВОЯ ЦИФРА СВОБОДЫ</div>
+        <div class="sc-num">$<span id="sc-fn">750,000</span></div>
+        <div class="sc-grid">
+          <div><b id="sc-years">27</b><span>лет пути</span></div>
+          <div><b id="sc-pct">2%</b><span>уже прошёл</span></div>
+        </div>
+      </div>
+      <p>Теперь это не мечта, а понятная цель. Возвращайся в канал — там разбираем, как пройти каждый шаг.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">ПРО ДЕНЬГИ ПРОСТО · ЧАСТЬ 2 ИЗ 2</div></footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const prog=document.getElementById('prog');
+const upd=()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';};
+addEventListener('scroll',upd,{passive:true});upd();
+(function(){const f=document.getElementById('floaty');const ico=['💵','🪙','💰','🌴'];
+  for(let i=0;i<14;i++){const s=document.createElement('span');s.textContent=ico[i%4];s.style.left=(i*7+3)+'%';s.style.bottom='-40px';s.style.fontSize=(18+(i%4)*8)+'px';s.style.animationDuration=(16+(i%6)*4)+'s';s.style.animationDelay=(-i*1.7)+'s';f.appendChild(s);}})();
+gsap.from('.hero h1',{y:60,opacity:0,duration:1.05,ease:'power4.out',delay:.1});
+gsap.from('.hero .sub',{y:26,opacity:0,duration:.9,ease:'power3.out',delay:.4});
+gsap.utils.toArray('.reveal').forEach(el=>gsap.to(el,{y:0,opacity:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+gsap.utils.toArray('section .kicker, section h2.sx, section .sx-p').forEach(el=>gsap.from(el,{y:24,opacity:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+document.querySelectorAll('.panel').forEach(p=>{
+  ScrollTrigger.create({trigger:p,start:'top 80%',end:'bottom 20%',onToggle:s=>p.classList.toggle('lit',s.isActive)});
+  p.addEventListener('pointermove',e=>{const r=p.getBoundingClientRect();p.style.setProperty('--mx',(e.clientX-r.left)+'px');p.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
+});
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+let freedomNumber=750000;
+
+const spendSlider=document.getElementById('spendSlider');
+function calc1(){
+  const m=+spendSlider.value;freedomNumber=m*300;
+  document.getElementById('spend').textContent=fmt(m);
+  document.getElementById('passive').textContent=fmt(m);
+  document.getElementById('fn').textContent=fmt(freedomNumber);
+  var _scfn=document.getElementById('sc-fn');if(_scfn)_scfn.textContent=fmt(freedomNumber);
+  spendSlider.style.setProperty('--p',((m-500)/9500*100)+'%');
+  drawFreedom(false);calcProg();
+}
+spendSlider.addEventListener('input',calc1);
+
+const investSlider=document.getElementById('investSlider');
+const fChart=document.getElementById('freedomChart');
+function yearsToFreedom(monthly,target){const r=0.07/12;let bal=0,mo=0;const cap=45*12;while(bal<target&&mo<cap){bal=bal*(1+r)+monthly;mo++;}return {years:mo/12,capped:mo>=cap&&bal<target};}
+function seriesTo(monthly,years){const r=0.07/12;let bal=0;const pts=[];const months=Math.ceil(years*12);for(let mo=0;mo<=months;mo++){if(mo>0)bal=bal*(1+r)+monthly;if(mo%3===0||mo===months)pts.push([mo/12,bal]);}return pts;}
+function drawFreedom(animate){
+  const monthly=+investSlider.value;const {years,capped}=yearsToFreedom(monthly,freedomNumber);const showYears=Math.min(years,45);
+  document.getElementById('invest').textContent=fmt(monthly);investSlider.style.setProperty('--p',((monthly-100)/3900*100)+'%');
+  const yb=document.getElementById('years');yb.textContent=(capped?'45+':showYears.toFixed(0));
+  const pts=seriesTo(monthly,showYears);const W=720,H=300,pb=22,pt=18;
+  const maxY=freedomNumber*1.14,maxX=Math.max(showYears,5);
+  const X=x=>(x/maxX)*W,Y=v=>H-pb-(v/maxY)*(H-pb-pt);
+  let d='M'+X(pts[0][0])+' '+Y(pts[0][1]);pts.forEach(p=>d+=' L'+X(p[0])+' '+Y(p[1]));
+  const lastX=X(pts[pts.length-1][0]),lastY=Y(pts[pts.length-1][1]);
+  const area=d+' L'+lastX+' '+(H-pb)+' L'+X(pts[0][0])+' '+(H-pb)+' Z';const fY=Y(freedomNumber);
+  fChart.innerHTML='<defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22c98a" stop-opacity=".35"/><stop offset="100%" stop-color="#22c98a" stop-opacity="0"/></linearGradient>'
+   +'<linearGradient id="fl" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22c98a"/><stop offset="100%" stop-color="#f3cf86"/></linearGradient></defs>'
+   +'<line x1="0" y1="'+fY+'" x2="'+W+'" y2="'+fY+'" stroke="#f3cf86" stroke-width="1.5" stroke-dasharray="6 6" opacity=".75"/>'
+   +'<path id="farea" d="'+area+'" fill="url(#fg)" opacity="'+(animate?0:1)+'"/>'
+   +'<path id="fline" d="'+d+'" fill="none" stroke="url(#fl)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
+   +'<circle cx="'+lastX+'" cy="'+lastY+'" r="5.5" fill="#5fe6b0"/>';
+  let coastI=pts.findIndex(p=>p[1]>=freedomNumber*0.5);const fnCoast=document.getElementById('fnCoast');
+  if(coastI>0){const cx=X(pts[coastI][0]),cy=Y(pts[coastI][1]);
+    fChart.innerHTML+='<line x1="'+cx+'" y1="'+cy+'" x2="'+cx+'" y2="'+(H-pb)+'" stroke="#f3cf86" stroke-width="1.2" stroke-dasharray="4 5" opacity=".5"/><circle cx="'+cx+'" cy="'+cy+'" r="4.5" fill="#f3cf86"/>';
+    fnCoast.style.left=Math.min(Math.max(cx/W*100,16),72)+'%';fnCoast.style.top=(cy/H*100)+'%';fnCoast.style.transform='translate(-50%,-150%)';fnCoast.style.opacity=1;}
+  else{fnCoast.style.opacity=0;}
+  const fnLine=document.getElementById('fnLine'),fnEnd=document.getElementById('fnEnd');
+  fnLine.textContent='цель · $'+fmt(freedomNumber);fnLine.style.top=(fY/H*100)+'%';fnLine.style.transform='translate(-50%,-150%)';
+  fnEnd.style.left=Math.min(lastX/W*100,82)+'%';fnEnd.style.top=(lastY/H*100)+'%';fnEnd.style.transform='translate(-50%,-150%)';
+  fnEnd.textContent=(capped?'45+ лет':showYears.toFixed(0)+' лет');var _fae=document.getElementById('fAxisEnd');if(_fae)_fae.textContent=(capped?'45+ лет':showYears.toFixed(0)+' лет');
+  var _scy=document.getElementById('sc-years');if(_scy)_scy.textContent=(capped?'45+':showYears.toFixed(0));
+  if(animate){
+    const line=fChart.querySelector('#fline');const L=line.getTotalLength();line.style.strokeDasharray=L;line.style.strokeDashoffset=L;
+    gsap.to(line,{strokeDashoffset:0,duration:1.8,ease:'power2.inOut'});
+    gsap.to('#farea',{opacity:1,duration:1,delay:.9});
+    gsap.from([fnLine,fnEnd,fnCoast],{opacity:0,duration:.6,delay:1});
+    gsap.fromTo(yb,{textContent:0},{textContent:capped?45:showYears,duration:1.8,snap:{textContent:1},ease:'power1.inOut',onUpdate:function(){yb.textContent=(capped?'45+':Math.round(+yb.textContent))}});
+  }
+}
+investSlider.addEventListener('input',()=>drawFreedom(false));
+
+const haveSlider=document.getElementById('haveSlider');
+function calcProg(){
+  const have=+haveSlider.value;const pct=Math.min(have/freedomNumber*100,100);
+  document.getElementById('have').textContent=fmt(have);haveSlider.style.setProperty('--p',(have/400000*100)+'%');
+  const f=document.getElementById('progFill');f.style.width=Math.max(pct,7)+'%';f.textContent=pct.toFixed(pct<10?1:0)+'%';
+  var _scp=document.getElementById('sc-pct');if(_scp)_scp.textContent=pct.toFixed(pct<10?1:0)+'%';
+  const note=document.getElementById('progNote');
+  if(pct<10)note.textContent='Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.';
+  else if(pct<50)note.textContent='Ты уже в пути. Самый трудный участок — первый, и ты его прошёл.';
+  else if(pct<100)note.textContent='Деньги теперь во многом растят себя сами.';
+  else note.textContent='Это свобода. Проценты покрывают твою жизнь.';
+}
+haveSlider.addEventListener('input',calcProg);
+calc1();calcProg();
+ScrollTrigger.create({trigger:'#freedomChart',start:'top 78%',once:true,onEnter:()=>drawFreedom(true)});
+ScrollTrigger.create({trigger:'#progFill',start:'top 86%',once:true,onEnter:()=>{const have=+haveSlider.value;const pct=Math.min(have/freedomNumber*100,100);gsap.fromTo('#progFill',{width:'0%'},{width:Math.max(pct,7)+'%',duration:1.4,ease:'power2.out'});}});
+</script>
+</body></html>
