@@ -98,9 +98,12 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .stat .v{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(28px,8.5vw,44px);line-height:1}
 .stat .k{font-size:12px;color:var(--mut);margin-top:8px}
 
-.melt .track{height:54px;border-radius:14px;background:rgba(255,255,255,.05);position:relative;overflow:hidden}
-.melt .fill{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:14px;background:linear-gradient(90deg,var(--emer),var(--gold));display:flex;align-items:center;padding-left:16px;font-family:'Bricolage Grotesque';font-weight:800;color:#06120c;font-size:18px}
-.melt .cap{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mut);margin-top:10px}
+.melt .track{height:46px;border-radius:13px;background:rgba(224,86,63,.14);position:relative;overflow:hidden}
+.melt .fill{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:13px;background:linear-gradient(90deg,var(--emer),var(--gold))}
+.melt .cap{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mut);margin-bottom:10px}
+.melt .cap b{color:var(--txt);font-family:'Bricolage Grotesque';font-size:17px}
+.melt .cap b.r{color:var(--red)}
+.melt .meltnote{text-align:center;font-size:12px;color:var(--mut);margin-top:10px;line-height:1.4}
 
 .dual{display:flex;gap:24px;justify-content:center;align-items:flex-end;height:210px;margin-top:8px}
 .dbar{width:74px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
@@ -222,8 +225,9 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
         <input type="range" min="1000" max="50000" step="1000" value="10000" id="infSlider">
       </div>
       <div class="melt">
-        <div class="track"><div class="fill" id="meltfill"><span id="meltval">$1,486</span></div></div>
-        <div class="cap"><span>Сейчас: $<span id="inf-now">10,000</span></span><span>Через 20 лет: <b style="color:var(--red)"><span id="inf-real">$1,486</span></b></span></div>
+        <div class="cap"><span>Было: <b>$<span id="inf-now">10,000</span></b></span><span>Осталось: <b class="r"><span id="inf-real">$1,486</span></b></span></div>
+        <div class="track"><div class="fill" id="meltfill"></div></div>
+        <div class="meltnote">через 20 лет на эти деньги купишь столько же, сколько сегодня на остаток</div>
       </div>
       <div class="takeaway"><b>👉 Вывод:</b> деньги дома — не защита, а тихая утечка. Пусть лучше работают.</div>
     </div>
@@ -301,7 +305,7 @@ mpSlider.addEventListener('input',()=>paintMP(false));paintMP(false);
 ScrollTrigger.create({trigger:'#mpSlider',start:'top 88%',once:true,onEnter:()=>paintMP(true)});
 
 const infSlider=document.getElementById('infSlider');const INF=Math.pow(1.10,-20);
-function paintInf(animate){const A=+infSlider.value;const real=Math.round(A*INF);document.getElementById('inf-amt').textContent=A.toLocaleString('en-US');document.getElementById('inf-now').textContent=A.toLocaleString('en-US');infSlider.style.setProperty('--p',((A-1000)/49000*100)+'%');const rEl=document.getElementById('inf-real'),mv=document.getElementById('meltval');if(animate){gsap.fromTo('#meltfill',{width:'100%'},{width:(INF*100).toFixed(1)+'%',duration:1.8,ease:'power2.inOut'});gsap.to([rEl,mv],{textContent:real,duration:1.8,ease:'power2.inOut',snap:{textContent:1},onUpdate:function(){const v='$'+Math.round(+this.targets()[0].textContent).toLocaleString('en-US');rEl.textContent=v;mv.textContent=v;}});}else{document.getElementById('meltfill').style.width=(INF*100).toFixed(1)+'%';rEl.textContent='$'+real.toLocaleString('en-US');mv.textContent='$'+real.toLocaleString('en-US');}}
+function paintInf(animate){const A=+infSlider.value;const real=Math.round(A*INF);document.getElementById('inf-amt').textContent=A.toLocaleString('en-US');document.getElementById('inf-now').textContent=A.toLocaleString('en-US');infSlider.style.setProperty('--p',((A-1000)/49000*100)+'%');const rEl=document.getElementById('inf-real');if(animate){gsap.fromTo('#meltfill',{width:'100%'},{width:(INF*100).toFixed(1)+'%',duration:1.8,ease:'power2.inOut'});gsap.to(rEl,{textContent:real,duration:1.8,ease:'power2.inOut',snap:{textContent:1},onUpdate:function(){rEl.textContent='$'+Math.round(+rEl.textContent).toLocaleString('en-US')}});}else{document.getElementById('meltfill').style.width=(INF*100).toFixed(1)+'%';rEl.textContent='$'+real.toLocaleString('en-US');}}
 infSlider.addEventListener('input',()=>paintInf(false));paintInf(false);
 ScrollTrigger.create({trigger:'#infSlider',start:'top 84%',once:true,onEnter:()=>paintInf(true)});
 
