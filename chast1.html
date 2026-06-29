@@ -13,6 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--txt);font-family:'Manrope',sans-serif;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+p,.sx-p,.takeaway,.testi .q,.cta p,.sub,.biglab{text-wrap:pretty;hyphens:none;overflow-wrap:normal}
 ::selection{background:var(--gold);color:#000}
 .wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
 h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05}
@@ -34,8 +35,8 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;lett
 .hero .sub{font-size:clamp(15px,4.3vw,18px);color:#c4c6d4;max-width:520px;margin-top:20px;position:relative;z-index:2}
 .proof{display:flex;align-items:center;gap:12px;margin-top:26px;position:relative;z-index:2;flex-wrap:wrap}
 .avs{display:flex}
-.avs span{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#2a2c3d,#15161f);border:2px solid var(--bg);margin-left:-9px;display:flex;align-items:center;justify-content:center;font-size:15px}
-.avs span:first-child{margin-left:0}
+.avs img{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);margin-left:-10px;object-fit:cover}
+.avs img:first-child{margin-left:0}
 .proof .txt{font-size:13px;color:#c4c6d4}
 .proof .txt b{color:var(--txt)}
 .stars{color:var(--gold);letter-spacing:1px;font-size:13px}
@@ -103,13 +104,14 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
 .dual{display:flex;gap:24px;justify-content:center;align-items:flex-end;height:210px;margin-top:8px}
 .dbar{width:74px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
-.dbar .col{width:100%;border-radius:12px 12px 0 0;height:0;display:flex;align-items:flex-start;justify-content:center;padding-top:8px;font-family:'Bricolage Grotesque';font-weight:800;font-size:13px;color:#fff}
+.dbar .col{width:100%;border-radius:12px 12px 0 0;height:0}
+.dbar .val{font-family:'Bricolage Grotesque';font-weight:800;font-size:14px;margin-bottom:8px}
 .dbar .cap{margin-top:10px;font-size:12px;color:var(--mut);text-align:center;line-height:1.3}
 
 .testi{background:linear-gradient(160deg,#11121d,#0a0b12);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:22px}
 .testi .q{font-size:15.5px;color:#e9e6dc;line-height:1.6}
 .testi .who{display:flex;align-items:center;gap:10px;margin-top:14px}
-.testi .who .a{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2a2c3d,#15161f);display:flex;align-items:center;justify-content:center;font-size:17px}
+.testi .who .a{width:40px;height:40px;border-radius:50%;object-fit:cover}
 .testi .who .n{font-size:13px}.testi .who .n b{display:block}.testi .who .n span{color:var(--mut);font-size:12px}
 .testi .st{color:var(--gold);font-size:13px;margin-bottom:10px;letter-spacing:1px}
 
@@ -135,10 +137,10 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <span class="pill"><span class="dot"></span>Бесплатно · для новых подписчиков</span>
     <h1>5 правил про деньги,<br><span class="em">которые меняют<br>всё</span></h1>
-    <p class="sub">Без сложных слов. На пальцах, с картинками. 3 минуты — и ты смотришь на деньги по-другому.</p>
+    <p class="sub">Без сложных слов. На пальцах, с картинками. 3 минуты — и ты смотришь на деньги по-другому.</p>
     <div class="proof">
-      <div class="avs"><span>🧑</span><span>👩</span><span>🧔</span><span>👵</span></div>
-      <div class="txt"><span class="stars">★★★★★</span> <b>4.9</b> · <b>12 400</b> человек уже прочитали</div>
+      <div class="avs"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop&crop=faces&q=72" alt=""></div>
+      <div class="txt"><span class="stars">★★★★★</span> <b>4.9</b> · <b>7 946</b> человек уже прочитали</div>
     </div>
   </div>
   <div class="scrollhint"><span></span>листай</div>
@@ -148,10 +150,10 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <div class="kicker"><div class="num">1</div><div class="lab">Деньги растут сами</div></div>
     <h2 class="sx">Деньги умеют <span class="hl">удваиваться</span> сами</h2>
-    <p class="sx-p">Положил деньги под процент — они растут, пока ты спишь. Когда их станет вдвое больше? Раздели 72 на процент.</p>
+    <p class="sx-p">Положил деньги под процент — они растут, пока ты спишь. Когда их станет вдвое больше? Раздели 72 на процент.</p>
     <div class="panel reveal">
       <div class="big"><span id="r72-years">9</span></div>
-      <div class="biglab">лет — и денег в 2 раза больше</div>
+      <div class="biglab">лет — и денег в 2 раза больше</div>
       <div class="rangewrap">
         <div class="rv"><span>Процент в год</span><b id="r72-rate">8%</b></div>
         <input type="range" min="2" max="20" step="1" value="8" id="r72">
@@ -170,13 +172,13 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
 
 <section>
   <div class="wrap">
-    <div class="kicker"><div class="num">2</div><div class="lab">Кто начал раньше — выигрывает</div></div>
-    <h2 class="sx">Аня вложила <span class="hl-e">в 3 раза меньше</span> — а денег больше</h2>
-    <p class="sx-p">Аня копила по чуть-чуть 10 лет и бросила. Дима начал позже и копил 30 лет. А денег больше у Ани — её деньги росли дольше.</p>
+    <div class="kicker"><div class="num">2</div><div class="lab">Кто начал раньше — выигрывает</div></div>
+    <h2 class="sx">Аня вложила <span class="hl-e">в 3 раза меньше</span> — а денег больше</h2>
+    <p class="sx-p">Аня копила по чуть-чуть 10 лет и бросила. Дима начал позже и копил 30 лет. А денег больше у Ани — её деньги росли дольше.</p>
     <div class="panel reveal">
       <div class="legendrow">
-        <div class="lgi"><span class="av" style="background:rgba(34,201,138,.18)">🟢</span>Аня · копила 10 лет</div>
-        <div class="lgi"><span class="av" style="background:rgba(232,181,77,.18)">🟡</span>Дима · копил 30 лет</div>
+        <div class="lgi"><span class="av" style="background:rgba(34,201,138,.18)">🟢</span>Аня копит с 25 до 35</div>
+        <div class="lgi"><span class="av" style="background:rgba(232,181,77,.18)">🟡</span>Дима копит с 35 до 65</div>
       </div>
       <div class="axisy">↑ сколько накопилось денег</div>
       <div class="chartbox" id="raceBox"><svg id="raceChart" viewBox="0 0 720 320" preserveAspectRatio="none"></svg></div>
@@ -193,8 +195,8 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
 <section>
   <div class="wrap">
     <div class="kicker"><div class="num">3</div><div class="lab">Почему долг не кончается</div></div>
-    <h2 class="sx">Платишь по карте — а долг <span class="hl-r">стоит на месте</span></h2>
-    <p class="sx-p">Платишь только маленький «минимум» — почти всё съедают проценты. Долг тянется годами. Подвигай и посмотри:</p>
+    <h2 class="sx">Платишь по карте — а долг <span class="hl-r">стоит на месте</span></h2>
+    <p class="sx-p">Платишь только маленький «минимум» — почти всё съедают проценты. Долг тянется годами. Подвигай и посмотри:</p>
     <div class="panel reveal">
       <div class="statgrid">
         <div class="stat"><div class="v" style="color:var(--red)"><span id="mp-years">0</span></div><div class="k">лет будешь платить</div></div>
@@ -204,7 +206,7 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
         <div class="rv"><span>Долг на карте</span><b>$<span id="mp-debt">5,000</span></b></div>
         <input type="range" min="1000" max="20000" step="500" value="5000" id="mpSlider">
       </div>
-      <div class="takeaway"><b>👉 Вывод:</b> плати чуть больше минимума — и срок с переплатой упадут в разы.</div>
+      <div class="takeaway"><b>👉 Вывод:</b> плати чуть больше минимума — и срок с переплатой упадут в разы.</div>
     </div>
   </div>
 </section>
@@ -221,25 +223,25 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
       </div>
       <div class="melt">
         <div class="track"><div class="fill" id="meltfill"><span id="meltval">$3,769</span></div></div>
-        <div class="cap"><span>Сейчас: $<span id="inf-now">10,000</span></span><span>Через 20 лет: <b style="color:var(--red)">$<span id="inf-real">3,769</span></b></span></div>
+        <div class="cap"><span>Сейчас: $<span id="inf-now">10,000</span></span><span>Через 20 лет: <b style="color:var(--red)"><span id="inf-real">$3,769</span></b></span></div>
       </div>
-      <div class="takeaway"><b>👉 Вывод:</b> деньги дома — не защита, а тихая утечка. Пусть лучше работают.</div>
+      <div class="takeaway"><b>👉 Вывод:</b> деньги дома — не защита, а тихая утечка. Пусть лучше работают.</div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="kicker"><div class="num">5</div><div class="lab">Больше получаешь — а денег нет</div></div>
+    <div class="kicker"><div class="num">5</div><div class="lab">Больше получаешь — а денег нет</div></div>
     <h2 class="sx">Зарплата <span class="hl">×2</span>, а денег столько же</h2>
-    <p class="sx-p">Стал получать вдвое больше — и тратить вдвое больше. Машина новее, аренда дороже. Отложил столько же: ноль.</p>
+    <p class="sx-p">Стал получать вдвое больше — и тратить вдвое больше. Машина новее, аренда дороже. Отложил столько же: ноль.</p>
     <div class="panel reveal">
       <div class="dual" id="dual">
-        <div class="dbar"><div class="col" data-h="75" style="background:linear-gradient(var(--blue),#3b6fd4)">$3K</div><div class="cap">Получал<br>раньше</div></div>
-        <div class="dbar"><div class="col" data-h="160" style="background:linear-gradient(var(--blue),#3b6fd4)">$6K</div><div class="cap">Получает<br>сейчас</div></div>
-        <div class="dbar"><div class="col" data-h="12" style="background:linear-gradient(var(--red),#b23b2c)">$0</div><div class="cap">Отложил<br>как и был</div></div>
+        <div class="dbar"><div class="val" style="color:#9cc0ff">$3K</div><div class="col" data-h="75" style="background:linear-gradient(var(--blue),#3b6fd4)"></div><div class="cap">Получал<br>раньше</div></div>
+        <div class="dbar"><div class="val" style="color:#9cc0ff">$6K</div><div class="col" data-h="160" style="background:linear-gradient(var(--blue),#3b6fd4)"></div><div class="cap">Получает<br>сейчас</div></div>
+        <div class="dbar"><div class="val" style="color:var(--red)">$0</div><div class="col" data-h="12" style="background:linear-gradient(var(--red),#b23b2c)"></div><div class="cap">Отложил<br>как и был</div></div>
       </div>
-      <div class="takeaway"><b>👉 Вывод:</b> богатый — не тот, кто много получает, а тот, кто <b>оставляет себе</b>.</div>
+      <div class="takeaway"><b>👉 Вывод:</b> богатый — не тот, кто много получает, а тот, кто <b>оставляет себе</b>.</div>
     </div>
   </div>
 </section>
@@ -248,8 +250,8 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <div class="testi reveal">
       <div class="st">★★★★★</div>
-      <div class="q">«Никогда не понимал, что не так с моими деньгами. Прочитал за 3 минуты — и наконец дошло, почему я ничего не откладываю. Теперь делаю иначе.»</div>
-      <div class="who"><span class="a">🧔</span><div class="n"><b>Артём, 29</b><span>новый подписчик</span></div></div>
+      <div class="q">«Никогда не понимал, что не так с моими деньгами. Прочитал за 3 минуты — и наконец дошло, почему я ничего не откладываю. Теперь делаю иначе.»</div>
+      <div class="who"><img class="a" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=96&h=96&fit=crop&crop=faces&q=72" alt=""><div class="n"><b>Артём, 29</b><span>подписчик канала</span></div></div>
     </div>
   </div>
 </section>
@@ -257,14 +259,14 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="cta reveal">
-      <h2>Ты понял <span class="g">как</span>.<br>Осталось — <span class="g">сколько</span>.</h2>
-      <p>Во второй части посчитаем твою цифру: сколько нужно, чтобы можно было не работать. Двигаешь ползунки — получаешь ответ.</p>
-      <a class="btn" href="#" id="cta-btn">Узнать свою цифру →</a>
+      <h2>Ты понял <span class="g">как</span>.<br>Осталось — <span class="g">сколько</span>.</h2>
+      <p>Во второй части посчитаем твою цифру: сколько нужно, чтобы можно было не работать. Двигаешь ползунки — получаешь ответ.</p>
+      <a class="btn" href="chast2.html" id="cta-btn">Узнать свою цифру →</a>
     </div>
   </div>
 </section>
 
-<footer><div class="wrap">ПРО ДЕНЬГИ ПРОСТО · ЧАСТЬ 1 ИЗ 2</div></footer>
+<footer><div class="wrap">ПРО ДЕНЬГИ ПРОСТО · ЧАСТЬ 1 ИЗ 2<br><a href="chast2.html" style="color:var(--gold2);text-decoration:none;font-weight:700">Часть 2 — твоя цифра свободы →</a></div></footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
@@ -289,7 +291,7 @@ ScrollTrigger.create({trigger:'#stack',start:'top 85%',once:true,onEnter:()=>{gs
 (function(){const r=0.08,c=2400;let a=0,b=0;const anna=[],boris=[];for(let age=25;age<=65;age++){if(age<35)a+=c;if(age>=35&&age<65)b+=c;a*=(1+r);b*=(1+r);anna.push(a);boris.push(b);}
   const fA=Math.round(anna[anna.length-1]),fB=Math.round(boris[boris.length-1]);const svg=document.getElementById('raceChart');const W=720,H=320,pb=20,pt=14;const max=Math.max(fA,fB)*1.05,n=anna.length;
   const X=i=>(i/(n-1))*W,Y=v=>H-pb-(v/max)*(H-pb-pt);const path=arr=>{let dd='M'+X(0)+' '+Y(arr[0]);for(let i=1;i<n;i++)dd+=' L'+X(i)+' '+Y(arr[i]);return dd;};
-  svg.innerHTML='<line x1="0" y1="'+Y(max*.5)+'" x2="'+W+'" y2="'+Y(max*.5)+'" stroke="rgba(255,255,255,.05)"/><path id="pB" d="'+path(boris)+'" fill="none" stroke="#e8b54d" stroke-width="3.5" stroke-linecap="round"/><path id="pA" d="'+path(anna)+'" fill="none" stroke="#22c98a" stroke-width="3.5" stroke-linecap="round"/><circle cx="'+X(n-1)+'" cy="'+Y(fA)+'" r="6" fill="#5fe6b0" class="dotA" opacity="0"/><circle cx="'+X(n-1)+'" cy="'+Y(fB)+'" r="6" fill="#f3cf86" class="dotB" opacity="0"/>';
+  svg.innerHTML='<line x1="0" y1="'+Y(max*.5)+'" x2="'+W+'" y2="'+Y(max*.5)+'" stroke="rgba(255,255,255,.05)"/><line x1="'+X(10)+'" y1="0" x2="'+X(10)+'" y2="'+H+'" stroke="rgba(95,230,176,.4)" stroke-width="1.2" stroke-dasharray="4 5"/><path id="pB" d="'+path(boris)+'" fill="none" stroke="#e8b54d" stroke-width="3.5" stroke-linecap="round"/><path id="pA" d="'+path(anna)+'" fill="none" stroke="#22c98a" stroke-width="3.5" stroke-linecap="round"/><circle cx="'+X(n-1)+'" cy="'+Y(fA)+'" r="6" fill="#5fe6b0" class="dotA" opacity="0"/><circle cx="'+X(n-1)+'" cy="'+Y(fB)+'" r="6" fill="#f3cf86" class="dotB" opacity="0"/>';
   ScrollTrigger.create({trigger:'#raceBox',start:'top 78%',once:true,onEnter:()=>{['#pA','#pB'].forEach(id=>{const p=svg.querySelector(id);const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;gsap.to(p,{strokeDashoffset:0,duration:2.1,ease:'power2.inOut'});});gsap.to('.dotA,.dotB',{opacity:1,duration:.4,delay:2});const eA=document.getElementById('anna'),eB=document.getElementById('boris');gsap.to(eA,{textContent:fA,duration:2.1,snap:{textContent:1},ease:'power1.inOut',onUpdate:function(){eA.textContent='$'+Math.round(+eA.textContent/1000)+'K'}});gsap.to(eB,{textContent:fB,duration:2.1,snap:{textContent:1},ease:'power1.inOut',onUpdate:function(){eB.textContent='$'+Math.round(+eB.textContent/1000)+'K'}});}});})();
 
 const mpSlider=document.getElementById('mpSlider');

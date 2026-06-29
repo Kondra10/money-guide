@@ -13,6 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--txt);font-family:'Manrope',sans-serif;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+p,.sx-p,.takeaway,.testi .q,.cta p,.sub,.subnote,.bignlab{text-wrap:pretty;hyphens:none;overflow-wrap:normal}
 ::selection{background:var(--emer);color:#000}
 .wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
 h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05}
@@ -34,8 +35,8 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;lett
 .hero .sub{font-size:clamp(15px,4.3vw,18px);color:#c2d0ca;max-width:540px;margin-top:20px;position:relative;z-index:2}
 .proof{display:flex;align-items:center;gap:12px;margin-top:26px;position:relative;z-index:2;flex-wrap:wrap}
 .avs{display:flex}
-.avs span{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#16241d,#0c1612);border:2px solid var(--bg);margin-left:-9px;display:flex;align-items:center;justify-content:center;font-size:15px}
-.avs span:first-child{margin-left:0}
+.avs img{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);margin-left:-10px;object-fit:cover}
+.avs img:first-child{margin-left:0}
 .proof .txt{font-size:13px;color:#c2d0ca}.proof .txt b{color:var(--txt)}
 .stars{color:var(--gold);letter-spacing:1px;font-size:13px}
 .scrollhint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--mut);font-size:11px;letter-spacing:2px;text-transform:uppercase;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -96,7 +97,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .testi{background:linear-gradient(160deg,#0e161a,#070d0f);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:22px}
 .testi .q{font-size:15.5px;color:#dfeae5;line-height:1.6}
 .testi .who{display:flex;align-items:center;gap:10px;margin-top:14px}
-.testi .who .a{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#16241d,#0c1612);display:flex;align-items:center;justify-content:center;font-size:17px}
+.testi .who .a{width:40px;height:40px;border-radius:50%;object-fit:cover}
 .testi .who .n{font-size:13px}.testi .who .n b{display:block}.testi .who .n span{color:var(--mut);font-size:12px}
 .testi .st{color:var(--gold);font-size:13px;margin-bottom:10px;letter-spacing:1px}
 
@@ -126,10 +127,10 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <span class="pill"><span class="dot"></span>Бонус · вторая часть</span>
     <h1>Сколько денег<br>нужно,<br><span class="em">чтобы<br>не работать</span></h1>
-    <p class="sub">Есть одна цифра. Накопил её — и можно жить на проценты, не ходя на работу. Посчитаем твою — двигай ползунки.</p>
+    <p class="sub">Есть одна цифра. Накопил её — и можно жить на проценты, не ходя на работу. Посчитаем твою — двигай ползунки.</p>
     <div class="proof">
-      <div class="avs"><span>🧑</span><span>👩</span><span>🧔</span><span>👵</span></div>
-      <div class="txt"><span class="stars">★★★★★</span> <b>4.9</b> · <b>9 800</b> человек посчитали свою цифру</div>
+      <div class="avs"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop&crop=faces&q=72" alt=""><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=faces&q=72" alt=""></div>
+      <div class="txt"><span class="stars">★★★★★</span> <b>4.9</b> · <b>6 318</b> человек посчитали свою цифру</div>
     </div>
   </div>
   <div class="scrollhint"><span></span>посчитать</div>
@@ -147,7 +148,7 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
         <div class="rv"><span>Трачу в месяц</span><b>$<span id="spend">2,500</span></b></div>
         <input type="range" min="500" max="10000" step="100" value="2500" id="spendSlider">
       </div>
-      <div class="passive"><span class="e">🤑</span><span>и она будет приносить тебе <b>$<span id="passive">2,500</span></b> в месяц — как раз на жизнь, ничего не делая</span></div>
+      <div class="passive"><span class="e">🤑</span><span>и она будет приносить тебе <b>$<span id="passive">2,500</span></b> в месяц — как раз на жизнь, ничего не делая</span></div>
       <div class="takeaway"><b>👉 Вывод:</b> чем меньше тратишь, тем меньше цифра и тем легче её достичь.</div>
     </div>
   </div>
@@ -157,7 +158,7 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <div class="kicker"><div class="num">2</div><div class="lab">Сколько идти</div></div>
     <h2 class="sx">За сколько лет ты <span class="hl-e">дойдёшь</span></h2>
-    <p class="sx-p">Поставь, сколько готов откладывать в месяц. Линия покажет, когда накопишь. Жёлтая точка — где деньги начинают расти сами.</p>
+    <p class="sx-p">Поставь, сколько готов откладывать в месяц. Линия покажет, когда накопишь. Жёлтая точка — где деньги начинают расти сами.</p>
     <div class="panel reveal">
       <div class="yearsbadge"><b id="years">0</b><span>лет до цели</span></div>
       <div class="axisy">↑ сколько у тебя денег</div>
@@ -180,14 +181,14 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <div class="kicker"><div class="num">3</div><div class="lab">Где ты сейчас</div></div>
     <h2 class="sx">Сколько ты уже <span class="hl">прошёл</span></h2>
-    <p class="sx-p">Поставь, сколько уже накоплено — увидишь, какую часть пути уже сделал.</p>
+    <p class="sx-p">Поставь, сколько уже накоплено — увидишь, какую часть пути уже сделал.</p>
     <div class="panel reveal">
       <div class="prog"><div class="f" id="progFill">0%</div></div>
       <div class="rangewrap">
         <div class="rv"><span>Уже накоплено</span><b>$<span id="have">15,000</span></b></div>
         <input type="range" min="0" max="400000" step="1000" value="15000" id="haveSlider">
       </div>
-      <div class="takeaway" id="progNote"><b>👉</b> Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.</div>
+      <div class="takeaway" id="progNote"><b>👉</b> Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.</div>
     </div>
   </div>
 </section>
@@ -197,9 +198,9 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
     <div class="kicker"><div class="num">4</div><div class="lab">Как дойти быстрее</div></div>
     <h2 class="sx">Четыре способа <span class="hl-e">ускориться</span></h2>
     <div class="levers">
-      <div class="lever reveal"><div class="ic">🛒</div><h3>Тратить меньше</h3><p>Меньше тратишь — и цифра меньше, и откладываешь больше.</p></div>
-      <div class="lever reveal"><div class="ic">💼</div><h3>Зарабатывать больше</h3><p>Прибавку не проедай — отправляй в копилку.</p></div>
-      <div class="lever reveal"><div class="ic">📈</div><h3>Деньги под процент</h3><p>Пусть деньги работают. Пара процентов сверху — и цель ближе на годы.</p></div>
+      <div class="lever reveal"><div class="ic">🛒</div><h3>Тратить меньше</h3><p>Меньше тратишь — и цифра меньше, и откладываешь больше.</p></div>
+      <div class="lever reveal"><div class="ic">💼</div><h3>Зарабатывать больше</h3><p>Прибавку не проедай — отправляй в копилку.</p></div>
+      <div class="lever reveal"><div class="ic">📈</div><h3>Деньги под процент</h3><p>Пусть деньги работают. Пара процентов сверху — и цель ближе на годы.</p></div>
       <div class="lever reveal"><div class="ic">⏳</div><h3>Начать раньше</h3><p>Самое сильное. Сегодня важнее, чем вдвое больше потом.</p></div>
     </div>
   </div>
@@ -209,8 +210,8 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
   <div class="wrap">
     <div class="testi reveal">
       <div class="st">★★★★★</div>
-      <div class="q">«Думал, что „не работать“ — это для богатых. Подвигал ползунки и увидел свою реальную цифру и срок. Впервые есть понятная цель, а не просто мечта.»</div>
-      <div class="who"><span class="a">👩</span><div class="n"><b>Марина, 34</b><span>новый подписчик</span></div></div>
+      <div class="q">«Думал, что „не работать“ — это для богатых. Подвигал ползунки и увидел свою реальную цифру и срок. Впервые есть понятная цель, а не просто мечта.»</div>
+      <div class="who"><img class="a" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=faces&q=72" alt=""><div class="n"><b>Марина, 27</b><span>подписчик канала</span></div></div>
     </div>
   </div>
 </section>
@@ -226,12 +227,12 @@ footer{padding:44px 0 56px;text-align:center;color:var(--mut);font-size:12px;let
           <div><b id="sc-pct">2%</b><span>уже прошёл</span></div>
         </div>
       </div>
-      <p>Теперь это не мечта, а понятная цель. Возвращайся в канал — там разбираем, как пройти каждый шаг.</p>
+      <p>Теперь это не мечта, а понятная цель. Возвращайся в канал — там разбираем, как пройти каждый шаг.</p>
     </div>
   </div>
 </section>
 
-<footer><div class="wrap">ПРО ДЕНЬГИ ПРОСТО · ЧАСТЬ 2 ИЗ 2</div></footer>
+<footer><div class="wrap">ПРО ДЕНЬГИ ПРОСТО · ЧАСТЬ 2 ИЗ 2<br><a href="chast1.html" style="color:var(--emer2);text-decoration:none;font-weight:700">← Часть 1 — 5 правил про деньги</a></div></footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
@@ -276,7 +277,7 @@ investSlider.addEventListener('input',()=>drawFreedom(false));
 
 const haveSlider=document.getElementById('haveSlider');
 function calcProg(){const have=+haveSlider.value;const pct=Math.min(have/freedomNumber*100,100);document.getElementById('have').textContent=fmt(have);haveSlider.style.setProperty('--p',(have/400000*100)+'%');const f=document.getElementById('progFill');f.style.width=Math.max(pct,7)+'%';f.textContent=pct.toFixed(pct<10?1:0)+'%';var _sp=document.getElementById('sc-pct');if(_sp)_sp.textContent=pct.toFixed(pct<10?1:0)+'%';
-  const note=document.getElementById('progNote');let t;if(pct<10)t='Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.';else if(pct<50)t='Ты уже в пути. Самый трудный участок — первый, и ты его прошёл.';else if(pct<100)t='Деньги теперь во многом растят себя сами.';else t='Это свобода. Проценты покрывают твою жизнь.';note.innerHTML='<b>👉</b> '+t;}
+  const note=document.getElementById('progNote');let t;if(pct<10)t='Начало — это уже больше, чем у большинства. Дальше пойдёт быстрее.';else if(pct<50)t='Ты уже в пути. Самый трудный участок — первый, и ты его прошёл.';else if(pct<100)t='Деньги теперь во многом растят себя сами.';else t='Это свобода. Проценты покрывают твою жизнь.';note.innerHTML='<b>👉</b> '+t;}
 haveSlider.addEventListener('input',calcProg);
 calc1();calcProg();
 ScrollTrigger.create({trigger:'#freedomChart',start:'top 78%',once:true,onEnter:()=>drawFreedom(true)});
